@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="15dp"
+    android:layout_marginLeft="15dp"
+    android:layout_marginTop="15dp"
+    card_view:cardCornerRadius="4dp"
+    card_view:cardElevation="2dp"
+    card_view:cardUseCompatPadding="true"
+    android:id="@+id/cardViewId">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/sectionActiveLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/cardDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="27 Sept 2017"
+                    android:theme="@style/TextLabelCard"/>
+
+                <TextView
+                    android:id="@+id/quota"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1000"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:theme="@style/TextValueCard"/>
+
+                <TextView
+                    android:id="@+id/lblQuota"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cuota:"
+                    android:layout_alignParentTop="true"
+                    android:layout_toLeftOf="@+id/quota"
+                    android:theme="@style/TextLabelCard"/>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/clientName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Juan Alberto Posada"
+                    android:theme="@style/TextValueCard"/>
+
+                <TextView
+                    android:id="@+id/clientAlias"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Juan Alberto Posada"
+                    android:theme="@style/TextValueCard"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/sectionDetailLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/lblLine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Línea:"
+                    android:theme="@style/TextLabelCard"/>
+
+                <TextView
+                    android:id="@+id/line"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Juguetería"
+                    android:theme="@style/TextValueCard"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/lblLine"
+                    android:layout_toEndOf="@+id/lblLine"
+                    android:layout_marginLeft="5dp" />
+
+                <TextView
+                    android:id="@+id/lblValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Valor:"
+                    android:layout_below="@+id/lblLine"
+                    android:theme="@style/TextLabelCard"/>
+
+                <TextView
+                    android:id="@+id/value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="25000"
+                    android:theme="@style/TextValueCard"
+                    android:layout_marginLeft="5dp"
+                    android:layout_below="@+id/line"
+                    android:layout_alignBottom="@+id/lblValue"
+                    android:layout_toRightOf="@+id/lblValue"
+                    android:layout_toEndOf="@+id/lblValue" />
+
+                <TextView
+                    android:id="@+id/lblAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dirección:"
+                    android:layout_below="@+id/lblValue"
+                    android:theme="@style/TextLabelCard"/>
+
+                <TextView
+                    android:id="@+id/address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Frente al hospital"
+                    android:theme="@style/TextValueCard"
+                    android:layout_marginLeft="5dp"
+                    android:layout_below="@+id/value"
+                    android:layout_alignBottom="@+id/lblAddress"
+                    android:layout_toRightOf="@+id/lblAddress"
+                    android:layout_toEndOf="@+id/lblAddress" />
+
+                <TextView
+                    android:id="@+id/lblPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Teléfono:"
+                    android:layout_below="@+id/lblAddress"
+                    android:theme="@style/TextLabelCard"/>
+
+                <TextView
+                    android:id="@+id/phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="30123456789"
+                    android:theme="@style/TextValueCard"
+                    android:layout_marginLeft="5dp"
+                    android:layout_below="@+id/address"
+                    android:layout_alignBottom="@+id/lblPhone"
+                    android:layout_toRightOf="@+id/lblPhone"
+                    android:layout_toEndOf="@+id/lblPhone" />
+
+                <TextView
+                    android:id="@+id/lblProducts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Detalles:"
+                    android:layout_below="@+id/lblPhone"
+                    android:theme="@style/TextLabelCard"/>
+
+                <TextView
+                    android:id="@+id/products"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Prestamo de 250000"
+                    android:theme="@style/TextValueCard"
+                    android:layout_marginLeft="5dp"
+                    android:layout_below="@+id/phone"
+                    android:layout_alignBottom="@+id/lblProducts"
+                    android:layout_toRightOf="@+id/lblProducts"
+                    android:layout_toEndOf="@+id/lblProducts" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <View
+            style="@style/Separator"
+            android:layout_marginBottom="10dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="15dp"
+            android:orientation="horizontal"
+            android:gravity="end">
+
+            <Button
+                android:id="@+id/editCard"
+                android:visibility="invisible"
+                android:layout_width="110dp"
+                android:layout_height="25dp"
+                android:background="@drawable/button_secundary"
+                android:text="Editar"
+                android:theme="@style/ButtonSmall"
+                android:textColor="@color/colorPrimaryDark"/>
+
+            <Button
+                android:id="@+id/listQuotas"
+                android:layout_width="110dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="20dp"
+                android:background="@color/colorPrimaryDark"
+                android:text="Abonos"
+                android:textColor="@android:color/white"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="15dp"
+    android:layout_marginLeft="15dp"
+    android:layout_marginTop="15dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/sectionActiveLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            style="@style/Separator"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp" />
+
+        <LinearLayout
+            android:id="@+id/containerItemUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/userName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Juan sin miedo"
+                android:theme="@style/TextValueCard"
+                android:layout_weight="10"/>
+
+            <TextView
+                android:id="@+id/user"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Juancho"
+                android:theme="@style/TextValueCard"
+                android:layout_weight="4"
+                android:textSize="14sp"/>
+
+            <Button
+                android:id="@+id/activeUser"
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                android:background="@drawable/button_secundary"
+                android:text="Inactivar"
+                android:theme="@style/ButtonSmall"
+                android:layout_weight="5"
+                android:textColor="@color/colorPrimaryDark"/>
+
+        </LinearLayout>
+
+        <View
+            style="@style/Separator"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp" />
+
+    </LinearLayout>
+</LinearLayout>

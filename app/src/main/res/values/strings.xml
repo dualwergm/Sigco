@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">$igco</string>
+    <string name="text_button_login">Ingresar</string>
+    <string name="hint_password">Ingresa tu contraseña</string>
+    <string name="hint_username">Ingresa tu usuario</string>
+    <string name="tab_download">Descargar</string>
+    <string name="tab_list">Tarjetas</string>
+    <string name="tab_upload">Cargar</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="logout">Salir de sigco</string>
+    <string name="createClient">Crear cliente</string>
+    <string name="sumary">Ver resumen</string>
+    <string name="subtitleDownload">Aquí puedes descargar todas las tarjetas disponibles (al día o atrasadas).</string>
+    <string name="downloadCard">Descargar tarjetas</string>
+    <string name="subtitleNoCards">No hay tarjetas descargadas. Puedes descargarlas por la opción [Descargar] o decirle al administrador si no tienes permiso.</string>
+    <string name="subtitleSuccess">Se han descargado todas las tarjetas exitosamente. Puedes revisarlas dando clic en el botón.</string>
+    <string name="reviewCards">Revisar tarjetas</string>
+    <string name="witoutCards">No hay tarjetas disponibles para descargar.</string>
+    <string name="subtitleConection">No se pudo conectar con $igco web. Por favor revise su conexión a internet o la configuración a dicho sitio e intente de nuevo</string>
+    <string name="intentLater">Intentar más tarde</string>
+    <string name="registerDetail">Registro de abono</string>
+    <string name="users">Usuarios</string>
+    <string name="registerUser">Registrar usuario</string>
+    <string name="server">Servidor</string>
+    <string name="clients">Clientes</string>
+    <string name="subtitleUpload">Se subirán las tarjetas y abonos registrados y se eliminarán del dispositivo.</string>
+    <string name="subtitleUploadSuccess">Las tarjetas se subieron exitosamente y se han eliminado del dispositivo.</string>
+</resources>

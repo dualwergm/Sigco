@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="15dp"
+    android:layout_marginLeft="15dp"
+    android:layout_marginTop="15dp"
+    android:orientation="vertical">
+
+    <View
+        style="@style/Separator"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp" />
+
+    <RelativeLayout
+        android:id="@+id/containerItemSummary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp">
+
+        <TextView
+            android:id="@+id/summaryDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="27 Sept 2017"
+            android:theme="@style/TextLabelCard"/>
+
+        <TextView
+            android:id="@+id/summaryValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:text="10000000000"
+            android:theme="@style/TextValueCard" />
+
+    </RelativeLayout>
+    <View
+        style="@style/Separator"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp" />
+
+
+</LinearLayout>

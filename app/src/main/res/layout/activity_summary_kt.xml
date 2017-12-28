@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dg.sigco.summary.view.SummaryKtActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="X"
+            android:layout_marginRight="10dp"
+            android:padding="15dp"
+            android:theme="@style/TextLabelCard"
+            android:fontFamily="sans-serif-black"
+            android:gravity="end"
+            android:layout_gravity="end"
+            android:textSize="24dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Resumen diario"
+            android:theme="@style/TextLabelCard"
+            android:fontFamily="sans-serif-black"
+            android:layout_marginLeft="15dp"
+            android:textSize="24dp"/>
+
+        <View
+            style="@style/Separator"
+            android:layout_marginTop="10dp"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/summaryReycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/noSummary"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No hay abonos registrados"
+            android:theme="@style/TextLabelCard"
+            android:fontFamily="sans-serif-black"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="44dp"/>
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>
