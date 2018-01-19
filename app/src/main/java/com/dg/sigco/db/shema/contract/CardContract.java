@@ -21,8 +21,7 @@ public final class CardContract {
             CardEntry.ADDRESS_COLUMN + DBConstanst.TEXT_TYPE + DBConstanst.COMMA +
             CardEntry.PHONE_COLUMN + DBConstanst.TEXT_TYPE + DBConstanst.COMMA +
             CardEntry.STATUS_COLUMN + DBConstanst.INTEGER_TYPE + DBConstanst.COMMA +
-            CardEntry.ACTIVE_COLUMN + DBConstanst.INTEGER_TYPE + DBConstanst.COMMA +
-            "CONSTRAINT cardid_UK UNIQUE (cardId) );";
+            CardEntry.ACTIVE_COLUMN + DBConstanst.INTEGER_TYPE + " );";
 
     public static final String SQL_DROP_TABLE = "DROP TABLE IF EXISTS " + CardEntry.TABLE_NAME;
 

@@ -17,8 +17,7 @@ public final class DetailContract {
             DetailContract.DetailEntry.CARD_SLID_COLUMN + DBConstanst.TEXT_TYPE + DBConstanst.COMMA +
             DetailContract.DetailEntry.VALUEC_COLUMN+ DBConstanst.REAL_TYPE + DBConstanst.COMMA +
             DetailContract.DetailEntry.CREATIONDATE_COLUMN + DBConstanst.NUMERIC_TYPE + DBConstanst.COMMA +
-            DetailContract.DetailEntry.DATE_COLUMN + DBConstanst.TEXT_TYPE + DBConstanst.COMMA +
-            "CONSTRAINT detailid_UK UNIQUE (cardDetailId) );";
+            DetailContract.DetailEntry.DATE_COLUMN + DBConstanst.TEXT_TYPE + " );";
 
     public static final String SQL_DROP_TABLE = "DROP TABLE IF EXISTS " + DetailContract.DetailEntry.TABLE_NAME;
 

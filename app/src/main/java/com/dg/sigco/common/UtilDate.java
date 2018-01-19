@@ -77,4 +77,8 @@ public class UtilDate {
         long ltime = date.getTime() + numDays * 24 * 60 * 60 * 1000;
         return new Date(ltime);
     }
+
+    public static String fillNumber(int n){
+        return n < 10 ? "0"+n : String.valueOf(n);
+    }
 }

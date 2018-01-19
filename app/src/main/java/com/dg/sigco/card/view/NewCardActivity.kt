@@ -60,7 +60,7 @@ class NewCardActivity : AppCompatActivity() {
 
     private fun showDatePickerDialog() {
         val newFragment = DatePickerFragment.newInstance { datePicker, year, month, day ->
-            selectedDate = year.toString() + "-" + (month + 1) + "-" + day
+            selectedDate = year.toString() + "-" + UtilDate.fillNumber(month + 1) + "-" + UtilDate.fillNumber(day)
             cardDate.setText(UtilDate.getDateES(selectedDate, UtilDate._DATE_FORMAT_SHORT))
         }
         newFragment.show(supportFragmentManager, "datePicker")
@@ -69,8 +69,8 @@ class NewCardActivity : AppCompatActivity() {
     private fun getCard():Card{
         val card = Card()
         card._id = cardKt?.id
-        when{
-            cardKt == null -> card.cardId = 0
+        when (cardKt) {
+            null -> card.cardId = 0
             else -> card.cardId = cardKt?.cardId
         }
         card.dateStr = selectedDate
@@ -82,6 +82,12 @@ class NewCardActivity : AppCompatActivity() {
         card.lineId = line?.lineId
         card.clientId = client?.clientId
         card.clientSLId = client?.id
+        val initDaySelected = UtilDate.getTimestampInitDay(selectedDate)
+        card.todaytoStr = UtilDate.getDateShort(UtilDate.addDays(initDaySelected, -1))
+        when {
+            initDaySelected.after(UtilDate.getCurrentDateInitTimestamp()) -> card.status = 1
+            else -> card.status = 2
+        }
         return card
     }
 

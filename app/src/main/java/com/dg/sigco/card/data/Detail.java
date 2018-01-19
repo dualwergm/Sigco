@@ -107,6 +107,7 @@ public class Detail implements Serializable{
         this.cardSLId = cursor.getString(cursor.getColumnIndex(DetailContract.DetailEntry.CARD_SLID_COLUMN));
         this.dateStr = cursor.getString(cursor.getColumnIndex(DetailContract.DetailEntry.DATE_COLUMN));
         this.value =  cursor.getDouble(cursor.getColumnIndex(DetailContract.DetailEntry.VALUEC_COLUMN));
+        this.creationDate =  new Timestamp(cursor.getLong(cursor.getColumnIndex(DetailContract.DetailEntry.CREATIONDATE_COLUMN)));
     }
 
     public ContentValues toContentValues() {
@@ -132,8 +133,8 @@ public class Detail implements Serializable{
     public String toJson(){
         try {
             JSONObject jDetail = new JSONObject();
-            jDetail.put(DetailContract.DetailEntry.CARD_ID_COLUMN, getCardId());
-            jDetail.put(DetailContract.DetailEntry.VALUEC_COLUMN, getValue());
+            jDetail.put(DetailContract.DetailEntry.CARD_ID_COLUMN, getCardId().toString());
+            jDetail.put(DetailContract.DetailEntry.VALUEC_COLUMN, getValue().toString());
             jDetail.put(DetailContract.DetailEntry.CREATIONDATE_COLUMN, getCreationDate().getTime());
             jDetail.put(DetailContract.DetailEntry.DATE_COLUMN, getDateStr());
             return jDetail.toString();

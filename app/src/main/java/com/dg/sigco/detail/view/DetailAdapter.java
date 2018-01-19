@@ -13,6 +13,7 @@ import com.dg.sigco.R;
 import com.dg.sigco.card.data.Card;
 import com.dg.sigco.card.data.Detail;
 import com.dg.sigco.common.Constants;
+import com.dg.sigco.common.TextUtils;
 import com.dg.sigco.common.UtilDate;
 
 import java.util.List;
@@ -44,7 +45,7 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailView
     public void onBindViewHolder(DetailViewHolder holder, int position) {
         final Detail detail = details.get(position);
         holder.detailDate.setText(UtilDate.getDateES(detail.getDateStr(), UtilDate._DATE_FORMAT_SHORT));
-        holder.detailValue.setText(detail.getValue().toString());
+        holder.detailValue.setText(TextUtils.formatMoney(detail.getValue().toString()));
         holder.containerItemDetail.setTag(detail);
         holder.containerItemDetail.setOnClickListener(new View.OnClickListener() {
             @Override

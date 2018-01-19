@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -45,6 +47,7 @@ public class NewDetailActivity extends AppCompatActivity implements INewDetailVi
         initializeSaveDetail();
         initializeDetailDatePicker();
         initializeData();
+        initializeFormatMoney();
     }
 
     private void initializeData(){
@@ -56,7 +59,6 @@ public class NewDetailActivity extends AppCompatActivity implements INewDetailVi
             detailValue.setText(currentDetail.getValue().toString());
         }
         detailDate.setText(UtilDate.getDateES(selectedDate, UtilDate._DATE_FORMAT_SHORT));
-
     }
 
     private void initializeSaveDetail(){
@@ -82,7 +84,7 @@ public class NewDetailActivity extends AppCompatActivity implements INewDetailVi
         final boolean has = card.getCurrentDetail() != null && !TextUtils.isEmpty(card.getCurrentDetail().get_id());
         Detail detail = !has ? new Detail() : card.getCurrentDetail();
         detail.setCardId(card.getCardId());
-        detail.setValue(Double.valueOf(detailValue.getText().toString()));
+        detail.setValue(Double.valueOf(com.dg.sigco.common.TextUtils.removeComma(detailValue.getText().toString())));
         detail.setDateStr(selectedDate);
         detail.setCardSLId(card.get_id());
         return detail;
@@ -110,11 +112,27 @@ public class NewDetailActivity extends AppCompatActivity implements INewDetailVi
         DatePickerFragment newFragment = DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                selectedDate =  year+ "-" + (month+1) + "-" + day;
+                selectedDate =  year+ "-" + UtilDate.fillNumber(month+1) + "-" + UtilDate.fillNumber(day);
                 detailDate.setText(UtilDate.getDateES(selectedDate, UtilDate._DATE_FORMAT_SHORT));
             }
         });
         newFragment.show(getSupportFragmentManager(), "datePicker");
+    }
+
+    private void initializeFormatMoney(){
+        com.dg.sigco.common.TextUtils.formatMoney(detailValue.getText());
+        detailValue.addTextChangedListener( new TextWatcher() {
+            boolean isEdiging;
+            @Override public void onTextChanged(CharSequence s, int start, int before, int count) { }
+            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+
+            @Override public void afterTextChanged(Editable s) {
+                if(isEdiging) return;
+                isEdiging = true;
+                com.dg.sigco.common.TextUtils.formatMoney(s);
+                isEdiging = false;
+            }
+        });
     }
 
     @Override

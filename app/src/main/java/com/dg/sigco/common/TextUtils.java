@@ -1,5 +1,7 @@
 package com.dg.sigco.common;
 
+import android.text.Editable;
+
 import java.text.DecimalFormat;
 import java.text.Normalizer;
 import java.text.NumberFormat;
@@ -29,5 +31,13 @@ public class TextUtils {
         NumberFormat nf2 = NumberFormat.getInstance(Locale.ENGLISH);
         ((DecimalFormat)nf2).applyPattern("###,###.###");
         return nf2.format(s1);
+    }
+
+    public static void formatMoney(Editable s){
+        s.replace(0, s.length(), formatMoney(s.toString()));
+    }
+
+    public static String removeComma(String s){
+         return s.replaceAll(",","");
     }
 }

@@ -17,7 +17,6 @@ public final class ClientContract {
             ClientEntry.ALIAS_COLUMN + DBConstanst.TEXT_TYPE + DBConstanst.COMMA +
             ClientEntry.ADDRESS_COLUMN + DBConstanst.TEXT_TYPE + DBConstanst.COMMA +
             ClientEntry.PHONE_COLUMN + DBConstanst.TEXT_TYPE + DBConstanst.COMMA +
-            "CONSTRAINT clientid_UK UNIQUE (clientId) " + DBConstanst.COMMA +
             "CONSTRAINT namealias_UK UNIQUE (name, alias) );";
 
     public static final String SQL_DROP_TABLE = "DROP TABLE IF EXISTS " + ClientEntry.TABLE_NAME;

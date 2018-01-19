@@ -20,7 +20,8 @@ public class DetailDBHelper {
             DetailContract.DetailEntry.CARD_ID_COLUMN,
             DetailContract.DetailEntry.CARD_SLID_COLUMN,
             DetailContract.DetailEntry.DATE_COLUMN,
-            DetailContract.DetailEntry.VALUEC_COLUMN
+            DetailContract.DetailEntry.VALUEC_COLUMN,
+            DetailContract.DetailEntry.CREATIONDATE_COLUMN
     };
 
     private DetailDBHelper(DBHelperManager helperManager){

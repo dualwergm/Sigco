@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import com.dg.sigco.R
+import com.dg.sigco.common.TextUtils
 import com.dg.sigco.common.inflate
 import com.dg.sigco.summary.data.Payment
 import kotlinx.android.synthetic.main.item_summary.view.*
@@ -26,7 +27,7 @@ class SummaryKtAdpater(val payments: List<Payment>): RecyclerView.Adapter<Summar
         fun bindView(payment: Payment){
             with(payment){
                 itemView.summaryDate.text = datePay
-                itemView.summaryValue.text = "$ ${String.format("%.2f", valuec)}"
+                itemView.summaryValue.text = "$ ${TextUtils.formatMoney(valuec.toString())}"
             }
         }
     }

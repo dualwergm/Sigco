@@ -69,9 +69,11 @@
                         android:hint="Valor del abono"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="number"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789.,"
                         android:maxLines="1"
-                        android:textSize="20dp"/>
+                        android:textSize="20dp"
+                        />
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout

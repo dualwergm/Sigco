@@ -20,6 +20,7 @@ import com.dg.sigco.R;
 import com.dg.sigco.card.presenter.IUploadPresenter;
 import com.dg.sigco.card.presenter.UploadPresenter;
 import com.dg.sigco.common.UtilView;
+import com.dg.sigco.parameter.presenter.ParameterPresenter;
 import com.dg.sigco.warning.view.WarningActivity;
 
 /**
@@ -29,6 +30,7 @@ public class UploadFragment extends Fragment implements IUploadView {
     private LinearLayout uploadLayout, successLayout;
     private Button uploadCards;
     private IUploadPresenter iUploadPresenter;
+    private ParameterPresenter parameterPresenter;
     private ProgressBar progressBar;
     private RelativeLayout progressLayout;
     private ObjectAnimator progressAnimator;
@@ -53,12 +55,14 @@ public class UploadFragment extends Fragment implements IUploadView {
         progressBar = view.findViewById(R.id.progressBar);
         progressAnimator = ObjectAnimator.ofInt(progressBar, "progress", 0, 100);
         iUploadPresenter = new UploadPresenter(this);
+        parameterPresenter = new ParameterPresenter();
         uploadCards = view.findViewById(R.id.uploadCards);
         initializeUpload();
         return view;
     }
 
     private void initializeUpload(){
+        parameterPresenter.loadServer();
         uploadCards.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

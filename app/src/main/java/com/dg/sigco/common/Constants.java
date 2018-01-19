@@ -18,4 +18,5 @@ public class Constants {
     public static final String FINISH_AFTER_CREATE_CARD = "finishAfterCreateCard";
     public static final String DETAILS = "details";
     public static final String VALUE = "value";
+    public static final String DATE = "date";
 }

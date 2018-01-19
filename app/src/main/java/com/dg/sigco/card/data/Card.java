@@ -8,6 +8,7 @@ import android.util.Log;
 import com.dg.sigco.client.repository.ClientRepositoryImp;
 import com.dg.sigco.common.Constants;
 import com.dg.sigco.db.shema.contract.CardContract;
+import com.dg.sigco.db.shema.contract.DetailContract;
 import com.dg.sigco.line.repository.LineRepositoryImp;
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.Expose;
@@ -247,7 +248,7 @@ public class Card implements Serializable {
     public Card(Cursor cursor, boolean isForUpload){
         loadCommons(cursor);
         if(isForUpload){
-            loadForUpload();
+            loadForUpload(cursor);
         }else{
             this.client = ClientRepositoryImp.getInstance().getClient(getClientSLId());
             this.line = LineRepositoryImp.getInstance().getLine(lineId);
@@ -269,10 +270,11 @@ public class Card implements Serializable {
         this.todaytoStr =  cursor.getString(cursor.getColumnIndex(CardContract.CardEntry.TODAYTO_COLUMN));
     }
 
-    private void loadForUpload(){
+    private void loadForUpload(Cursor cursor){
         if(this.clientId == 0){
             this.client = ClientRepositoryImp.getInstance().getClient(getClientSLId());
         }
+        this.creationDate = new Timestamp(cursor.getLong(cursor.getColumnIndex(CardContract.CardEntry.CREATION_DATE_COLUMN)));
     }
 
     public ContentValues toContentValues() {
@@ -302,22 +304,23 @@ public class Card implements Serializable {
         values.put(CardContract.CardEntry.ADDRESS_COLUMN, getAddress());
         values.put(CardContract.CardEntry.PHONE_COLUMN, getPhone());
         values.put(CardContract.CardEntry.CREATION_DATE_COLUMN, new Date().getTime());
+        values.put(CardContract.CardEntry.TODAYTO_COLUMN, getTodaytoStr());
         return values;
     }
 
     public String toJson(){
         try {
             JSONObject jCard = new JSONObject();
-            jCard.put(CardContract.CardEntry.CARD_ID_COLUMN, getCardId());
-            jCard.put(CardContract.CardEntry.LINE_ID_COLUMN, getLineId());
-            jCard.put(CardContract.CardEntry.CLIENT_ID_COLUMN, getClientId());
+            jCard.put(CardContract.CardEntry.CARD_ID_COLUMN, getCardId().toString());
+            jCard.put(CardContract.CardEntry.LINE_ID_COLUMN, getLineId().toString());
+            jCard.put(CardContract.CardEntry.CLIENT_ID_COLUMN, getClientId().toString());
             jCard.put(CardContract.CardEntry.PRODUCTS_COLUMN, getProducts());
-            jCard.put(Constants.VALUE, getValue());
-            jCard.put(CardContract.CardEntry.QUOTA_COLUMN, getQuota());
-            jCard.put(CardContract.CardEntry.DATEC_COLUMN, getDateStr());
+            jCard.put(Constants.VALUE, getValue().toString());
+            jCard.put(CardContract.CardEntry.QUOTA_COLUMN, getQuota().toString());
+            jCard.put(Constants.DATE, getDateStr());
             jCard.put(CardContract.CardEntry.ADDRESS_COLUMN, getAddress());
             jCard.put(CardContract.CardEntry.PHONE_COLUMN, getPhone());
-            jCard.put(CardContract.CardEntry.STATUS_COLUMN, getStatus());
+            jCard.put(CardContract.CardEntry.STATUS_COLUMN, "0"); //TODO
             jCard.put(CardContract.CardEntry.TODAYTO_COLUMN, getTodaytoStr());
             jCard.put(CardContract.CardEntry.CREATION_DATE_COLUMN, getCreationDate().getTime());
             if(clientId == 0 && getClient() != null){
