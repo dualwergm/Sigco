@@ -83,9 +83,11 @@ class NewCardActivity : AppCompatActivity() {
         card.clientId = client?.clientId
         card.clientSLId = client?.id
         val initDaySelected = UtilDate.getTimestampInitDay(selectedDate)
-        card.todaytoStr = UtilDate.getDateShort(UtilDate.addDays(initDaySelected, -1))
         when {
-            initDaySelected.after(UtilDate.getCurrentDateInitTimestamp()) -> card.status = 1
+            initDaySelected.after(UtilDate.getCurrentDateInitTimestamp()) -> {
+                card.status = 1
+                card.todaytoStr = UtilDate.getDateShort(UtilDate.addDays(initDaySelected, -1))
+            }
             else -> card.status = 2
         }
         return card

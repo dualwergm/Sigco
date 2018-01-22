@@ -166,6 +166,14 @@ public class Card implements Serializable {
         this.status = status;
     }
 
+    public boolean isValidStatus(){
+        return this.status != null && this.status.intValue() > 0;
+    }
+
+    public boolean isDelayed(){
+        return this.status != null && this.status.intValue() == 2;
+    }
+
     public String getTodaytoStr() {
         return todaytoStr;
     }
@@ -268,6 +276,7 @@ public class Card implements Serializable {
         this.address =  cursor.getString(cursor.getColumnIndex(CardContract.CardEntry.ADDRESS_COLUMN));
         this.phone =  cursor.getString(cursor.getColumnIndex(CardContract.CardEntry.PHONE_COLUMN));
         this.todaytoStr =  cursor.getString(cursor.getColumnIndex(CardContract.CardEntry.TODAYTO_COLUMN));
+        this.status =  cursor.getInt(cursor.getColumnIndex(CardContract.CardEntry.STATUS_COLUMN));
     }
 
     private void loadForUpload(Cursor cursor){
@@ -320,7 +329,7 @@ public class Card implements Serializable {
             jCard.put(Constants.DATE, getDateStr());
             jCard.put(CardContract.CardEntry.ADDRESS_COLUMN, getAddress());
             jCard.put(CardContract.CardEntry.PHONE_COLUMN, getPhone());
-            jCard.put(CardContract.CardEntry.STATUS_COLUMN, "0"); //TODO
+            jCard.put(CardContract.CardEntry.STATUS_COLUMN, getStatus().toString());
             jCard.put(CardContract.CardEntry.TODAYTO_COLUMN, getTodaytoStr());
             jCard.put(CardContract.CardEntry.CREATION_DATE_COLUMN, getCreationDate().getTime());
             if(clientId == 0 && getClient() != null){

@@ -24,7 +24,8 @@ public class CardDBHelper {
             CardContract.CardEntry.ADDRESS_COLUMN,
             CardContract.CardEntry.PHONE_COLUMN,
             CardContract.CardEntry.TODAYTO_COLUMN,
-            CardContract.CardEntry.CREATION_DATE_COLUMN
+            CardContract.CardEntry.CREATION_DATE_COLUMN,
+            CardContract.CardEntry.STATUS_COLUMN
     };
 
     private static CardDBHelper cardHelper;
@@ -81,8 +82,8 @@ public class CardDBHelper {
                         null);
     }
 
-    public void updateTodayto(int cardId, String todayTo) {
-        String sql = "Update card set todayto = '"+todayTo+"' WHERE cardId = "+cardId;
+    public void updateTodayto(int cardId, String todayTo, int cardStatus) {
+        String sql = "Update card set todayto = '"+todayTo+"', status = "+cardStatus+" WHERE cardId = "+cardId;
         helperManager.getWritableDatabase().execSQL(sql);
     }
 

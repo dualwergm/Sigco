@@ -37,6 +37,9 @@ public class Line implements Serializable{
     @SerializedName("cardsDto")
     @Expose
     private List<Card> cards = null;
+    @SerializedName("clientsDto")
+    @Expose
+    private List<Client> clients = null;
     @SerializedName("error")
     @Expose
     private Integer error;
@@ -95,6 +98,14 @@ public class Line implements Serializable{
 
     public void setCards(List<Card> cards) {
         this.cards = cards;
+    }
+
+    public List<Client> getClients() {
+        return clients;
+    }
+
+    public void setClients(List<Client> clients) {
+        this.clients = clients;
     }
 
     public Integer getError() {

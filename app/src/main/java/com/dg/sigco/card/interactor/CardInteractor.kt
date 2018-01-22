@@ -15,6 +15,9 @@ class CardInteractor {
         val daysPayed = (payed / cardKt.quota).toInt()
         val toDayTo = UtilDate.addDays(UtilDate.stringToDate(cardKt.dateStr, UtilDate._DATE_FORMAT_SHORT), daysPayed-1)
         val dateShort = UtilDate.getDateShort(toDayTo)
-        CardRepositoryImp().updateTodayto(cardId, dateShort)
+        when {
+            UtilDate.getCurrentDateInitTimestamp().after(toDayTo) -> CardRepositoryImp().updateTodayto(cardId, null, 2)
+            else -> CardRepositoryImp().updateTodayto(cardId, dateShort, 1)
+        }
     }
 }

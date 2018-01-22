@@ -61,7 +61,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
         holder.products.setText(card.getProducts());
         holder.listQuotas.setTag(card);
         holder.editCard.setTag(card);
-        assignStatusColor(holder, card.getTodaytoStr());
+        assignStatusColor(holder, card);
         activeSectionLayoutListener(holder);
         activeListQuotasButton(holder.listQuotas);
         activeEditCardButton(holder.editCard);
@@ -96,16 +96,16 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
         });
     }
 
-    private void assignStatusColor(CardViewHolder holder, String toDayToStr){
-        if(TextUtils.isEmpty(toDayToStr)){
+    private void assignStatusColor(CardViewHolder holder, Card card){
+        if(TextUtils.isEmpty(card.getTodaytoStr()) && !card.isValidStatus()){
             return;
         }
-        Date toDayTo = UtilDate.stringToDate(toDayToStr, UtilDate._DATE_FORMAT_SHORT);
-        if(toDayTo == null){
-            return;
+        Date toDayTo = null;
+        if(!TextUtils.isEmpty(card.getTodaytoStr())){
+            toDayTo = UtilDate.stringToDate(card.getTodaytoStr(), UtilDate._DATE_FORMAT_SHORT);
         }
         Timestamp currentDate = UtilDate.getCurrentDateInitTimestamp();
-        if(currentDate.after(toDayTo)){
+        if(card.isDelayed() || (toDayTo != null && currentDate.after(toDayTo))){
             holder.clientName.setTextColor(ContextCompat.getColor(activity, R.color.statusDelayed));
             holder.clientAlias.setTextColor(ContextCompat.getColor(activity, R.color.statusDelayed));
         }else{
@@ -139,19 +139,19 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
         private Button listQuotas, editCard;
         public CardViewHolder(View itemView) {
             super(itemView);
-            sectionActiveLayout = (LinearLayout)itemView.findViewById(R.id.sectionActiveLayout);
-            sectionDetailLayout = (RelativeLayout)itemView.findViewById(R.id.sectionDetailLayout);
-            listQuotas = (Button)itemView.findViewById(R.id.listQuotas);
-            editCard = (Button)itemView.findViewById(R.id.editCard);
-            cardDate = (TextView)itemView.findViewById(R.id.cardDate);
-            quota = (TextView)itemView.findViewById(R.id.quota);
-            clientName = (TextView)itemView.findViewById(R.id.clientName);
-            clientAlias = (TextView)itemView.findViewById(R.id.clientAlias);
-            line = (TextView)itemView.findViewById(R.id.line);
-            value = (TextView)itemView.findViewById(R.id.value);
-            address = (TextView)itemView.findViewById(R.id.address);
-            phone = (TextView)itemView.findViewById(R.id.phone);
-            products = (TextView)itemView.findViewById(R.id.products);
+            sectionActiveLayout = itemView.findViewById(R.id.sectionActiveLayout);
+            sectionDetailLayout = itemView.findViewById(R.id.sectionDetailLayout);
+            listQuotas = itemView.findViewById(R.id.listQuotas);
+            editCard = itemView.findViewById(R.id.editCard);
+            cardDate = itemView.findViewById(R.id.cardDate);
+            quota = itemView.findViewById(R.id.quota);
+            clientName = itemView.findViewById(R.id.clientName);
+            clientAlias = itemView.findViewById(R.id.clientAlias);
+            line = itemView.findViewById(R.id.line);
+            value = itemView.findViewById(R.id.value);
+            address = itemView.findViewById(R.id.address);
+            phone = itemView.findViewById(R.id.phone);
+            products = itemView.findViewById(R.id.products);
         }
     }
 

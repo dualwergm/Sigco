@@ -57,6 +57,7 @@ public class LineRepositoryImp {
         protected Long doInBackground(Void... voids) {
             long amountCard = 0;
             savedMap = ClientRepositoryImp.getInstance().getClientsAsMap();
+            ClientRepositoryImp.getInstance().saveNewClients(lines.get(0).getClients(), savedMap);
             for (Line line : lines) {
                 amountCard += (line.getCards() == null ? 0 : line.getCards().size());
                 dbHelper.save(line);

@@ -146,7 +146,7 @@ public class CardRepositoryImp implements Callback<List<Line>>{
         return maxCardId;
     }
 
-    public void updateTodayto(int cardId, String todayto){
-        dbHelper.updateTodayto(cardId, todayto);
+    public void updateTodayto(int cardId, String todayto, int cardStatus){
+        dbHelper.updateTodayto(cardId, todayto, cardStatus);
     }
 }

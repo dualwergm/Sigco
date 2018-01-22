@@ -1,13 +1,16 @@
 package com.dg.sigco.client.repository;
 
 import android.database.Cursor;
+import android.text.TextUtils;
 
 import com.dg.sigco.card.data.Client;
 import com.dg.sigco.db.helper.ClientDBHelper;
 import com.dg.sigco.db.helper.DBHelperManager;
 import com.dg.sigco.db.shema.contract.ClientContract;
+import com.dg.sigco.line.repository.LineRepositoryImp;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -53,6 +56,16 @@ public class ClientRepositoryImp {
         }
         cursor.close();
         return clientsMap;
+    }
+
+    public void saveNewClients(List<Client> clients, Map<Integer, String> clientsMap){
+        String clientSLId = "";
+        for (Client client: clients) {
+            if(TextUtils.isEmpty(clientsMap.get(client.getClientId()))){
+                clientSLId = String.valueOf(clientRepositoryImp.save(client));
+                LineRepositoryImp.savedMap.put(client.getClientId(), clientSLId);
+            }
+        }
     }
 }
 
